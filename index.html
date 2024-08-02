@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 5 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    .arrow * {
+      height: 100px;
+    }
+    * {
+    overflow-anchor: none !important;
+    scroll-snap-stop: normal !important;
+    overscroll-behavior: unset !important;
+    scroll-behavior: unset !important;
+}
+
+.container, header, footer, .container-fluid, body, div, span, section {
+    overflow-anchor: none !important;
+    scroll-snap-stop: normal !important;
+    overscroll-behavior: unset !important;
+    scroll-behavior: unset !important;
+}
+    /* .strikethrough:before {
+      content: '';
+      position: absolute;
+      width: 45%;
+      height: 5px;
+      background-color: red;
+      top: 50%;
+      left: 0%;
+    } */
+
+    .strikethrough::before,
+.strikethrough::after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 49%;
+}
+
+.strikethrough::before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.strikethrough::after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+        <h1 class="display-4 fw-bold lh-1">Hopscotch, but for windows.</h1>
+        <p class="lead mt-3 mb-3">
+          Have you ever tried to download an app but then found out that your device wasn't supported? That's where Hopscotch On Desktop comes in. Hopscotch On Desktop brings the creative possibilities of Hopscotch to a whole new audience, enabling users to create and play projects on a Windows device.
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+          <a href="https://docs-hopondesk.vercel.app/start/pre-installation" class="btn btn-success btn-lg px-4 me-md-2 fw-bold">Download</a>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="smoothScroll('about')">Learn More</button>
+        </div>
+      </div>
+      <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+          <img class="rounded-lg-3" src="/assets/img/home/community.png" alt="" style="max-height: 400px;">
+      </div>
+    </div>
+
+    <div class="row gx-5">
+      <div class="col-lg-6 col-12 mt-5">
+        <div class="row p-4 align-items-center rounded-3 border shadow-lg">
+          <h2 class="display-5 fw-bold lh-1">Designed To Save Time.</h2>
+            <p class="lead mt-3 mb-3">
+              With a selection of built-in tools and the option to import plugins, Hopscotch On Desktop can literally save you hours!
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+              <button type="button" class="btn btn-secondary btn-lg px-4" onclick="smoothScroll('plugins')">Plugins & Add-Ons List</button>
+              <a href="https://docs-hopondesk.vercel.app/developers/plugins" class="btn btn-outline-secondary btn-lg px-4">Plugin Documentation</a>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12 mt-5">
+        <div class="row p-4 align-items-center rounded-3 border shadow-lg">
+          <h2 class="display-5 fw-bold lh-1">Hands-On Installation.</h2>
+            <p class="lead mt-3 mb-3">
+              Follow our comprehensive guide to compile the application yourself so you know exactly what's being installed.
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+              <a href="https://docs-hopondesk.vercel.app/start/pre-installation" class="btn btn-secondary btn-lg px-4">Installation Guide</a>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12 mt-5">
+        <div class="row p-4 align-items-center rounded-3 border shadow-lg">
+          <h2 class="display-5 fw-bold lh-1">Extensive Testing.</h2>
+            <p class="lead mt-3 mb-3">
+              With a strong bug-squashing Beta Testing and development team, you can be sure that bugs stand no chance.
+              <br>
+              On average, bugs are solved within just <span id="averageSolve"></span>!
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+              <button type="button" class="btn btn-warning btn-lg px-4" onclick="smoothScroll('people')">Beta Testers</button>
+              <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="smoothScroll('statistics')">More Statistics</button>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12 mt-5">
+        <div class="row p-4 align-items-center rounded-3 border shadow-lg">
+          <h2 class="display-5 fw-bold lh-1">Built-In Debugger.</h2>
+            <p class="lead mt-3 mb-3">
+              Set breakpoints, step through code, view variable values live and more!
+              <br>
+              Feature expected by v2.0.
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+              <a class="btn btn-success btn-lg px-4" href="/features/debugger.html">Track Progress</a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row gx-5 mt-5" id="statistics">
+      <h1 class="text-center mt-5 strikethrough mb-4">Statistics</h1>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card mb-3 rounded-3 border shadow-lg" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-4 d-flex align-items-center">
+              <div style="background-image: url(/assets/icons/bug_black.png); width: 100%; height: 60%; background-size: contain; background-position: center; background-repeat: no-repeat;" class="img-fluid rounded-start ms-2 me-2" alt="..."></div>
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h1 class="card-title display-1" style="font-size: 150px; line-height: 150px;"><span id="bugsSolvedLastMonth"></span></h1>
+                <p class="card-text mt-3">Bugs squashed in the last 1 month.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card mb-3 rounded-3 border shadow-lg" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-4 d-flex align-items-center">
+              <div style="background-image: url(/assets/icons/plugin.png); width: 100%; height: 65%; background-size: contain; background-position: center; background-repeat: no-repeat;" class="img-fluid rounded-start ms-2 me-2" alt="..."></div>
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h1 class="card-title display-1" style="font-size: 150px; line-height: 150px;"><span id="plugin_count">0</span></h1>
+                <p class="card-text mt-3">Whitelisted plugins.<br>&nbsp;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card mb-3 rounded-3 border shadow-lg" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-4 d-flex align-items-center">
+              <div style="background-image: url(/assets/icons/release_black.png); width: 100%; height: 50%; background-size: contain; background-position: center; background-repeat: no-repeat;" class="img-fluid rounded-start ms-2 me-2" alt="..."></div>
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h1 class="card-title display-1" style="font-size: 150px; line-height: 150px;"><span id="releases"></span></h1>
+                <p class="card-text mt-3">Releases (All Time)<br>&nbsp;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row gx-5 mt-5" id="plugins">
+      <h1 class="text-center mt-5 strikethrough">Plugins, Tools & Add-Ons</h1>
+      <p class="text-center mt-3 mb-4" style="text-wrap: balance;">This list includes built-in tools and approved plugins. <a href="" data-bs-toggle="modal" data-bs-target="#approval">Learn more.</a></p>
+    </div>
+    <div class="row gx-5 mt-5" id="people">
+      <h1 class="text-center mt-5 strikethrough">The Most Awesomest People</h1>
+      <p class="text-center">Also known as the Beta Testers :3</p>
+    </div>
+    <div class="row gx-5 mt-5" id="about">
+      <h1 class="text-center mt-5 strikethrough">About</h1>
+      <p class="text-center">
+        Let's do the math.
+        <br>
+        As of right now <span class="marketshare_device"></span> of devices are a desktop.
+        <br>
+        Of those <span class="marketshare_device"></span>, <span class="marketshare_os"></span> of them run a version of Windows OS.
+        <br>
+        That's a lot of people using Windows, and that's why I've created Hospcotch On Desktop.
+      </p>
+
+      <p class="text-center">
+        Hopscotch On Desktop brings the creative possibilities of Hopscotch to a whole new audience, enabling users to create and play projects on a Windows device, even while offline.
+      </p>
+
+      <p class="text-center">
+        <b>Where do you get your data from?</b>
+        <br>
+        Every time you visit this site, data from the last month is pulled live from <a href="https://gs.statcounter.com/">Statcounter Global Stats</a>, a leading market share analysis source.
+      </p>
+    </div>
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="approval" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="approvalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="approvalLabel">What are Approved Plugins?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body px-5">
+        <p style="max-width: 50vw;" class="text-center">
+          Be at ease knowing that every plugin that is Approved/Whitelisted, has been reviewed by <i>@DogIcing</i> to make sure that:
+        </p>
+        <ol class="text-center ps-0" style="list-style-position: inside;">
+          <li>It does exactly what it says it does</li>
+          <li>It changes nothing but the project's code</li>
+          <li>It does not damage or affect your machine</li>
+          <li>It does not damage the project or detrement it in any way</li>
+        </ol>
+        <h2 class="text-center my-5">The Approval Process</h2>
+        <div class="text-center mt-3"><h3 class="bg-warning bg-opacity-50 p-4" style="display: inline-block; border-radius: 50px;">Plugin is submitted for approval</h3></div>
+        <div class="align-items-center d-flex justify-content-center arrow">
+          <img src="/assets/icons/down_arrow.png"/>
+        </div>
+        <div class="text-center mt-3"><h5 class="bg-primary bg-opacity-50 p-4" style="display: inline-block; border-radius: 50px;">Plugin code is reviewed for security</h5></div>
+        <div class="align-items-center d-flex justify-content-center arrow">
+          <img src="/assets/icons/down_arrow.png"/>
+        </div>
+        <div class="text-center mt-3"><h5 class="bg-primary bg-opacity-50 p-4" style="display: inline-block; border-radius: 50px;">Plugin is tested extensively</h5></div>
+        <div class="align-items-center d-flex justify-content-center arrow">
+          <img src="/assets/icons/down_arrow.png"/>
+        </div>
+        <div class="text-center mt-3"><h5 class="bg-success bg-opacity-50 p-4" style="display: inline-block; border-radius: 50px;">An example is provided by the plugin's creator</h5></div>
+        <div class="align-items-center d-flex justify-content-center arrow">
+          <img src="/assets/icons/down_arrow.png"/>
+        </div>
+        <div class="text-center mt-3"><h5 class="bg-primary bg-opacity-50 p-4" style="display: inline-block; border-radius: 50px;">Plugin is tested again to ensure functionality</h5></div>
+        <div class="align-items-center d-flex justify-content-center arrow">
+          <img src="/assets/icons/down_arrow.png"/>
+        </div>
+        <div class="text-center mt-3"><h5 class="bg-success bg-opacity-50 p-4" style="display: inline-block; border-radius: 50px;">Proposed details such as description and image are provided by the plugin's creator</h5></div>
+        <div class="align-items-center d-flex justify-content-center arrow">
+          <img src="/assets/icons/down_arrow.png"/>
+        </div>
+        <div class="text-center mt-3"><h5 class="bg-primary bg-opacity-50 p-4" style="display: inline-block; border-radius: 50px;">Details are reviewed</h5></div>
+        <div class="align-items-center d-flex justify-content-center arrow">
+          <img src="/assets/icons/down_arrow.png"/>
+        </div>
+        <div class="text-center mt-3"><h5 class="bg-primary bg-opacity-50 p-4" style="display: inline-block; border-radius: 50px;">Plugin is added to the Hopscotch On Desktop website</h5></div>
+        <div class="align-items-center d-flex justify-content-center arrow">
+          <img src="/assets/icons/down_arrow.png"/>
+        </div>
+        <div class="text-center mt-3"><h3 class="bg-warning bg-opacity-50 p-4" style="display: inline-block; border-radius: 50px;">Plugin is whitelisted and receives a verification number</h3></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script>
+    function smoothScroll(id){
+      document.getElementById(id).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    var releases = new XMLHttpRequest();
+    releases.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       document.getElementById("releases").innerHTML = JSON.parse(releases.responseText).length;
+    }
+};
+releases.open("GET", "https://api.github.com/repos/HopscotchOnDesktop/HopscotchOnDesktop/releases", true);
+releases.send();
+
+var bugs = new XMLHttpRequest();
+bugs.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+      var bugsSolvedInLastMonth = 0;
+      var bugSolveTime = [];
+      var averageBugSolveTime = [];
+      JSON.parse(bugs.responseText).forEach(bug => {
+        if (Math.ceil((new Date()-getDateFromString(bug.solved, true))/ 8.64e7) < 31) {
+          bugsSolvedInLastMonth += 1;
+        }
+        bugSolveTime.push(Math.ceil((getDateFromString(bug.solved)-getDateFromString(bug.opened))/ 8.64e7));
+        var total = 0;
+        bugSolveTime.forEach(time => {total+=time});
+        averageBugSolveTime = total/bugSolveTime.length;
+      });
+      document.getElementById("averageSolve").innerHTML = `${averageBugSolveTime} days`;
+      document.getElementById("bugsSolvedLastMonth").innerHTML = bugsSolvedInLastMonth;
+    }
+};
+bugs.open("GET", "/data/bugs.json", true);
+bugs.send();
+
+var plugins = new XMLHttpRequest();
+plugins.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+      var plugin_count = 0;
+      JSON.parse(plugins.responseText).plugins.forEach(plugin => {
+        if (plugin.type == "Plugin") {
+          plugin_count++;
+          document.getElementById("plugin_count").innerHTML = plugin_count;
+        }
+        var webpage = "";
+        if (plugin.web_page != "") {
+          webpage = 
+          `<div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+            <a class="btn btn-outline-secondary btn-lg px-4" href="${plugin.web_page}">Visit Web Page</a>
+          </div>`
+        }
+        document.getElementById("plugins").innerHTML +=
+        `<div class="col-12 col-xl-6 mt-5 mt-xl-0">
+        <div class="row p-6 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+          <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
+            <h1 class="display-4 fw-bold lh-1">${plugin.name}</h1>
+            <p class="lead mt-3 mb-3">
+              ${plugin.description}
+            </p>
+            ${webpage}
+          </div>
+          <div class="col-lg-5 offset-lg-1 p-0 overflow-hidden shadow-lg">
+              <img class="rounded-lg-3" src="${plugin.img_location}" alt="${plugin.name} image" style="max-height: 400px;">
+          </div>
+        </div>
+      </div>`;
+      });
+    }
+};
+plugins.open("GET", "/data/plugins.json", true);
+plugins.send();
+
+var people = new XMLHttpRequest();
+people.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    JSON.parse(people.responseText).forEach(person => {
+      var _person = new XMLHttpRequest();
+      _person.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // JSON.parse(_person.responseText).forEach(person => {
+            document.getElementById("people").innerHTML +=
+            `<div class="col-6 col-md-4 text-center mt-5">
+              <img src="https://sea1.discourse-cdn.com/gethopscotch${JSON.parse(_person.responseText).user.avatar_template.replace("{size}","288")}" style="width: 100px; height: 100px; border-radius: 100px;"/>
+              <p class="mt-3">
+                <i>@${person.username}</i>
+                <br>
+                <b>- ${person.description} -</b>
+              </p>
+            </div>`;
+          //});
+        }
+      }
+      _person.open("GET", "https://corsproxy.io/?" + encodeURIComponent(`https://forum.gethopscotch.com/u/${person.username}.json`), true);
+      _person.send();
+    });
+  }
+};
+people.open("GET", "/data/people.json", true);
+people.send();
+
+
+var marketshare_os = new XMLHttpRequest();
+    marketshare_os.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(JSON.parse(JSON.stringify(JSON.parse(marketshare_os.responseText).xml)), "text/xml");
+      Array.from(xmlDoc.getElementsByTagName("set")).forEach(set => {
+        if(set.attributes.label.nodeValue == "Windows") {
+          Array.from(document.getElementsByClassName("marketshare_os")).forEach(element => {element.innerHTML = `${set.attributes.value.nodeValue}%`});
+        }
+      });
+    }
+};
+marketshare_os.open("GET", "https://gs.statcounter.com/os-market-share/desktop/worldwide/chart.php?bar=1&device=Desktop&device_hidden=desktop&statType_hidden=os_combined&region_hidden=ww&granularity=monthly&statType=Operating%20System&region=Worldwide&fromInt=202406&toInt=202406&fromMonthYear=2024-06&toMonthYear=2024-06&hideCaption=true&bottomLegend=true&siteStyling=true&siteChartMargins=true&forceJson=true&setChartTitle=Desktop%20Operating%20System%20Market%20Share%20Worldwide", true);
+marketshare_os.send();
+
+var marketshare_device = new XMLHttpRequest();
+    marketshare_device.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(JSON.parse(JSON.stringify(JSON.parse(marketshare_device.responseText).xml)), "text/xml");
+      Array.from(xmlDoc.getElementsByTagName("set")).forEach(set => {
+        if(set.attributes.label.nodeValue == "Desktop") {
+          Array.from(document.getElementsByClassName("marketshare_device")).forEach(element => {element.innerHTML = `${set.attributes.value.nodeValue}%`});
+        }
+      });
+    }
+};
+marketshare_device.open("GET", "https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet/worldwide/chart.php?bar=1&device=Desktop%20%26%20Mobile%20%26%20Tablet&device_hidden=desktop%2Bmobile%2Btablet&multi-device=true&statType_hidden=comparison&region_hidden=ww&granularity=monthly&statType=Platform%20Comparison&region=Worldwide&fromInt=202406&toInt=202406&fromMonthYear=2024-06&toMonthYear=2024-06&hideCaption=true&bottomLegend=true&siteStyling=true&siteChartMargins=true&forceJson=true&setChartTitle=Desktop%20vs%20Mobile%20vs%20Tablet%20Market%20Share%20Worldwide", true);
+marketshare_device.send();
+
+// var book = `\u003Cchart caption='StatCounter Global Stats' subCaption=\"Operating System Market Share Worldwid on June 2024\" showValues='1' chartLeftMargin='0' chartRightMargin='0' chartTopMargin='-25' bgColor='FFFFFF' showalternatevgridcolor='0' showalternatehgridcolor='0' bgAlpha='0,0' numberSuffix='%' canvasBorderAlpha='50' bgImage='https://www.statcounter.com/images/logo_gs_chart_faded_padded.png' bgImageDisplayMode='fit' canvasBgAlpha='0'\nexportEnabled='1' exportAtClient='0' exportAction='download' exportFormats='PNG' exportHandler='https://gs.statcounter.com/export/index.php' exportFileName='StatCounter-os_combined-ww-monthly-202406-202406-bar'\nlegendBorderAlpha='0' legendBgColor='000000' legendBgAlpha='0' legendPosition='BOTTOM' legendShadow='0'\n canvasBorderThickness='1' canvasPadding='0' showBorder='0'  labelFontSize='12'  labelDisplay='Rotate' slantLabels='1'\u003E  \u003Cset value='44.77' label='Android' color='ff6600' anchorBorderColor='ff6600' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='27.01' label='Windows' color='0078d7' anchorBorderColor='0078d7' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='17.7' label='iOS' color='80827c' anchorBorderColor='80827c' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='5.55' label='OS X' color='c815c6' anchorBorderColor='c815c6' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='2.38' label='Unknown' color='c7a311' anchorBorderColor='c7a311' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='1.51' label='Linux' color='d20000' anchorBorderColor='d20000' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='1.09' label='Other' color='202020' anchorBorderColor='202020' anchorBgColor='ffffff'\u003E\u003C/set\u003E\u003Cstyles\u003E\n    \u003Cdefinition\u003E\n      \u003Cstyle name='myCaptionFont' type='font' size='14' bold='1' isHTML='1' topMargin='14' /\u003E\n    \u003C/definition\u003E\n    \u003Capplication\u003E\n      \u003Capply toObject='Caption' styles='myCaptionFont' /\u003E\n    \u003C/application\u003E\n    \u003Cdefinition\u003E\n      \u003Cstyle name='myLegendFont' type='font' size='13' color='000000' bold='0' isHTML='1' font='open_sanslight'/\u003E\n    \u003C/definition\u003E\n    \u003Capplication\u003E\n      \u003Capply toObject='Legend' styles='myLegendFont' /\u003E\n    \u003C/application\u003E\n    \u003Cdefinition\u003E\n      \u003Cstyle name='myHTMLFont' type='font' isHTML='1' /\u003E\n    \u003C/definition\u003E\n    \u003Capplication\u003E\n      \u003Capply toObject='TOOLTIP' styles='myHTMLFont' /\u003E\n    \u003C/application\u003E\n  \u003C/styles\u003E\n\u003C/chart\u003E\n`;
+
+
+
+// console.log(`"${book.replace(/\\\\/g,'\\').replace(/\"/g,"'")}"`);
+// console.log(JSON.stringify(book));
+// //var xmlDoc = parser.parseFromString(JSON.parse(`"${book.replace(/\\\\/g,'\\').replace(/\"/g,"'")}"`), "text/xml");
+// var xmlDoc = parser.parseFromString(JSON.parse(JSON.stringify(book)), "text/xml");
+// console.log(xmlDoc.getElementsByTagName("set")[0].attributes.label.nodeValue);
+
+// console.log(first);
+
+function getDateFromString(date, removeOneDay) {
+  try {
+    if (removeOneDay) return new Date(date.substring(0, 4), date.substring(4, 6)-1, date.substring(6, 8)-1);
+    return new Date(date.substring(0, 4), date.substring(4, 6)-1, date.substring(6, 8));
+  } catch (error) {
+    return null;
+  }
+}
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+    "plugins":[
+        {
+            "name": "Pixel Art Generator",
+            "type": "Tool",
+            "description": "Say goodbye to spending hours tediously coding a pixel art with the built-in Pixel Art Generator tool!",
+            "id": "81b7bc3f-55d6-4b22-8c24-7966418b73b1",
+            "img_location": "/assets/img/plugins/81b7bc3f-55d6-4b22-8c24-7966418b73b1.png",
+            "web_page": "/tools/81b7bc3f-55d6-4b22-8c24-7966418b73b1"
+        },
+        {
+            "name": "Kermitify",
+            "type": "Plugin",
+            "description": "Change all the images in a Hopscotch project to an image of Kermit.",
+            "id": "dcd5fc70-409a-4b06-84d2-f0a79408dd99",
+            "img_location": "/assets/img/plugins/dcd5fc70-409a-4b06-84d2-f0a79408dd99.jpg",
+            "web_page": "/tools/dcd5fc70-409a-4b06-84d2-f0a79408dd99"
+        }
+    ]
+}

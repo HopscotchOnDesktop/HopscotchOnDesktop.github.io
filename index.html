@@ -378,7 +378,7 @@ people.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           // JSON.parse(_person.responseText).forEach(person => {
             document.getElementById("people").innerHTML +=
-            `<div class="col-6 col-md-4 text-center mt-5">
+            `<div class="col-6 col-md-4 text-center mt-5 mx-auto">
               <img src="https://sea1.discourse-cdn.com/gethopscotch${JSON.parse(_person.responseText).user.avatar_template.replace("{size}","288")}" style="width: 100px; height: 100px; border-radius: 100px;"/>
               <p class="mt-3">
                 <i>@${person.username}</i>

@@ -179,6 +179,21 @@ html, body {
           </div>
         </div>
       </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card mb-3 rounded-3 border shadow-lg" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-4 d-flex align-items-center">
+              <div style="background-image: url(/assets/icons/mug.png); width: 100%; height: 60%; background-size: contain; background-position: center; background-repeat: no-repeat;" class="img-fluid rounded-start ms-2 me-2" alt="..."></div>
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h1 class="card-title display-1" style="font-size: 150px; line-height: 150px;"><span id="tea"></span></h1>
+                <p class="card-text mt-3">Cups of Tea</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row gx-5 mt-5" id="plugins">
       <h1 class="text-center mt-5 strikethrough">Plugins, Tools & Add-Ons</h1>
@@ -286,10 +301,18 @@ html, body {
 releases.open("GET", "https://api.github.com/repos/HopscotchOnDesktop/HopscotchOnDesktop/releases", true);
 releases.send();
 
+    var tea = new XMLHttpRequest();
+    tea.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       document.getElementById("tea").innerHTML = JSON.parse(tea.responseText).tea;
+    }
+};
+tea.open("GET", "/data/tea.json", true);
+tea.send();
+
 var bugs = new XMLHttpRequest();
 bugs.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-       // Typical action to be performed when the document is ready:
       var bugsSolvedInLastMonth = 0;
       var bugSolveTime = [];
       var averageBugSolveTime = [];
@@ -312,7 +335,6 @@ bugs.send();
 var plugins = new XMLHttpRequest();
 plugins.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-       // Typical action to be performed when the document is ready:
       var plugin_count = 0;
       JSON.parse(plugins.responseText).plugins.forEach(plugin => {
         if (plugin.type == "Plugin") {
@@ -405,18 +427,6 @@ var marketshare_device = new XMLHttpRequest();
 };
 marketshare_device.open("GET", "https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet/worldwide/chart.php?bar=1&device=Desktop%20%26%20Mobile%20%26%20Tablet&device_hidden=desktop%2Bmobile%2Btablet&multi-device=true&statType_hidden=comparison&region_hidden=ww&granularity=monthly&statType=Platform%20Comparison&region=Worldwide&fromInt=202406&toInt=202406&fromMonthYear=2024-06&toMonthYear=2024-06&hideCaption=true&bottomLegend=true&siteStyling=true&siteChartMargins=true&forceJson=true&setChartTitle=Desktop%20vs%20Mobile%20vs%20Tablet%20Market%20Share%20Worldwide", true);
 marketshare_device.send();
-
-// var book = `\u003Cchart caption='StatCounter Global Stats' subCaption=\"Operating System Market Share Worldwid on June 2024\" showValues='1' chartLeftMargin='0' chartRightMargin='0' chartTopMargin='-25' bgColor='FFFFFF' showalternatevgridcolor='0' showalternatehgridcolor='0' bgAlpha='0,0' numberSuffix='%' canvasBorderAlpha='50' bgImage='https://www.statcounter.com/images/logo_gs_chart_faded_padded.png' bgImageDisplayMode='fit' canvasBgAlpha='0'\nexportEnabled='1' exportAtClient='0' exportAction='download' exportFormats='PNG' exportHandler='https://gs.statcounter.com/export/index.php' exportFileName='StatCounter-os_combined-ww-monthly-202406-202406-bar'\nlegendBorderAlpha='0' legendBgColor='000000' legendBgAlpha='0' legendPosition='BOTTOM' legendShadow='0'\n canvasBorderThickness='1' canvasPadding='0' showBorder='0'  labelFontSize='12'  labelDisplay='Rotate' slantLabels='1'\u003E  \u003Cset value='44.77' label='Android' color='ff6600' anchorBorderColor='ff6600' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='27.01' label='Windows' color='0078d7' anchorBorderColor='0078d7' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='17.7' label='iOS' color='80827c' anchorBorderColor='80827c' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='5.55' label='OS X' color='c815c6' anchorBorderColor='c815c6' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='2.38' label='Unknown' color='c7a311' anchorBorderColor='c7a311' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='1.51' label='Linux' color='d20000' anchorBorderColor='d20000' anchorBgColor='ffffff'\u003E\u003C/set\u003E  \u003Cset value='1.09' label='Other' color='202020' anchorBorderColor='202020' anchorBgColor='ffffff'\u003E\u003C/set\u003E\u003Cstyles\u003E\n    \u003Cdefinition\u003E\n      \u003Cstyle name='myCaptionFont' type='font' size='14' bold='1' isHTML='1' topMargin='14' /\u003E\n    \u003C/definition\u003E\n    \u003Capplication\u003E\n      \u003Capply toObject='Caption' styles='myCaptionFont' /\u003E\n    \u003C/application\u003E\n    \u003Cdefinition\u003E\n      \u003Cstyle name='myLegendFont' type='font' size='13' color='000000' bold='0' isHTML='1' font='open_sanslight'/\u003E\n    \u003C/definition\u003E\n    \u003Capplication\u003E\n      \u003Capply toObject='Legend' styles='myLegendFont' /\u003E\n    \u003C/application\u003E\n    \u003Cdefinition\u003E\n      \u003Cstyle name='myHTMLFont' type='font' isHTML='1' /\u003E\n    \u003C/definition\u003E\n    \u003Capplication\u003E\n      \u003Capply toObject='TOOLTIP' styles='myHTMLFont' /\u003E\n    \u003C/application\u003E\n  \u003C/styles\u003E\n\u003C/chart\u003E\n`;
-
-
-
-// console.log(`"${book.replace(/\\\\/g,'\\').replace(/\"/g,"'")}"`);
-// console.log(JSON.stringify(book));
-// //var xmlDoc = parser.parseFromString(JSON.parse(`"${book.replace(/\\\\/g,'\\').replace(/\"/g,"'")}"`), "text/xml");
-// var xmlDoc = parser.parseFromString(JSON.parse(JSON.stringify(book)), "text/xml");
-// console.log(xmlDoc.getElementsByTagName("set")[0].attributes.label.nodeValue);
-
-// console.log(first);
 
 function getDateFromString(date, removeOneDay) {
   try {

@@ -183,7 +183,7 @@ html, body {
         <div class="card mb-3 rounded-3 border shadow-lg" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-4 d-flex align-items-center">
-              <div style="background-image: url(/assets/icons/mug.png); width: 100%; height: 60%; background-size: contain; background-position: center; background-repeat: no-repeat;" class="img-fluid rounded-start ms-2 me-2" alt="..."></div>
+              <div style="background-image: url(/assets/icons/tea.png); width: 100%; height: 60%; background-size: contain; background-position: center; background-repeat: no-repeat;" class="img-fluid rounded-start ms-2 me-2" alt="..."></div>
             </div>
             <div class="col-8">
               <div class="card-body">
@@ -208,9 +208,9 @@ html, body {
       <p class="text-center">
         Let's do the math.
         <br>
-        As of right now <span class="marketshare_device"></span> of devices are a desktop.
+        As of right now 37.1% of devices are a desktop.
         <br>
-        Of those <span class="marketshare_device"></span>, <span class="marketshare_os"></span> of them run a version of Windows OS.
+        Of those 37.1%, 72.81% of them run a version of Windows OS.
         <br>
         That's a lot of people using Windows, and that's why I've created Hospcotch On Desktop.
       </p>
@@ -396,37 +396,6 @@ people.onreadystatechange = function() {
 };
 people.open("GET", "/data/people.json", true);
 people.send();
-
-
-var marketshare_os = new XMLHttpRequest();
-    marketshare_os.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var parser = new DOMParser();
-      var xmlDoc = parser.parseFromString(JSON.parse(JSON.stringify(JSON.parse(marketshare_os.responseText).xml)), "text/xml");
-      Array.from(xmlDoc.getElementsByTagName("set")).forEach(set => {
-        if(set.attributes.label.nodeValue == "Windows") {
-          Array.from(document.getElementsByClassName("marketshare_os")).forEach(element => {element.innerHTML = `${set.attributes.value.nodeValue}%`});
-        }
-      });
-    }
-};
-marketshare_os.open("GET", "https://gs.statcounter.com/os-market-share/desktop/worldwide/chart.php?bar=1&device=Desktop&device_hidden=desktop&statType_hidden=os_combined&region_hidden=ww&granularity=monthly&statType=Operating%20System&region=Worldwide&fromInt=202406&toInt=202406&fromMonthYear=2024-06&toMonthYear=2024-06&hideCaption=true&bottomLegend=true&siteStyling=true&siteChartMargins=true&forceJson=true&setChartTitle=Desktop%20Operating%20System%20Market%20Share%20Worldwide", true);
-marketshare_os.send();
-
-var marketshare_device = new XMLHttpRequest();
-    marketshare_device.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var parser = new DOMParser();
-      var xmlDoc = parser.parseFromString(JSON.parse(JSON.stringify(JSON.parse(marketshare_device.responseText).xml)), "text/xml");
-      Array.from(xmlDoc.getElementsByTagName("set")).forEach(set => {
-        if(set.attributes.label.nodeValue == "Desktop") {
-          Array.from(document.getElementsByClassName("marketshare_device")).forEach(element => {element.innerHTML = `${set.attributes.value.nodeValue}%`});
-        }
-      });
-    }
-};
-marketshare_device.open("GET", "https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet/worldwide/chart.php?bar=1&device=Desktop%20%26%20Mobile%20%26%20Tablet&device_hidden=desktop%2Bmobile%2Btablet&multi-device=true&statType_hidden=comparison&region_hidden=ww&granularity=monthly&statType=Platform%20Comparison&region=Worldwide&fromInt=202406&toInt=202406&fromMonthYear=2024-06&toMonthYear=2024-06&hideCaption=true&bottomLegend=true&siteStyling=true&siteChartMargins=true&forceJson=true&setChartTitle=Desktop%20vs%20Mobile%20vs%20Tablet%20Market%20Share%20Worldwide", true);
-marketshare_device.send();
 
 function getDateFromString(date, removeOneDay) {
   try {
